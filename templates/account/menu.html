@@ -1,0 +1,17 @@
+<dev class="col-3">
+    <div class="card">
+        <div class="card-header">Account Setting</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static' , filename=current_user.avatar) }}" width="200" height="200" alt="">
+            <p class="text-center mt-2">{{ current_user.name }}</p>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item"><a class="link" href="{{ url_for('account_info') }}">Info Account</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('account_edit') }}">Edit Profile</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('account_avatar') }}">Profile Avatar</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('account_password') }}">Change Password</a></li>
+                <li class="list-group-item bg-danger "><a class="link text-white" href="{{ url_for('SignOut') }}">sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</dev>

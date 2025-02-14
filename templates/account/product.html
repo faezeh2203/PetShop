@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+<main>
+    <section class="product-section">
+        <div class="container">
+            <h2 class="section-title">Explore Dog Breeds</h2>
+            <div class="product-list-container">
+                {% for product in products %}
+                    <div class="product-card">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">{{ product.name }}</h3>
+                            <p class="product-price">{{ product.price }} تومان</p>
+                            <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="add-to-cart">Add to Cart</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include 'footer.html' %}

@@ -1,0 +1,20 @@
+{% include 'header.html' %}
+
+<h2>Login Form</h2>
+
+<form action="/login" method="POST" novalidate>
+    {{ form.csrf_token }}
+    <ul>
+        {% for field , errors in form.errors.items() %}
+            <li><b style="color: red;">{{ ' , '.join(errors) }}</b></li>
+        {% endfor %}
+    </ul>
+    <p>{{ form.username(placeholder='Enter Username') }}</p>
+    <p>{{ form.password(placeholder='Enter Password') }}</p>
+    <p>{{ form.submit(value='submit Form') }}</p>
+
+
+</form>
+
+
+{% include 'footer.html' %}

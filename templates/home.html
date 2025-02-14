@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+
+<main class="container mt-4">
+    <section class="breed-list-section">
+        <h2 class="text-center mb-4">Explore Dog Breeds</h2>
+        <div class="row">
+            {% for breed, sub_breeds in breeds.items() %}
+                <div class="col-md-4 mb-4">
+                    <div class="card breed-card">
+                        <img src="{{ breed_images[breed] }}" alt="{{ breed }} image" class="card-img-top breed-image">
+                        <div class="card-body">
+                            <h3 class="card-title breed-name">{{ breed | capitalize }}</h3>
+                            {% if sub_breeds %}
+                                <ul class="list-group list-group-flush sub-breed-list">
+                                    {% for sub_breed in sub_breeds %}
+                                        <li class="list-group-item sub-breed-item">{{ sub_breed | capitalize }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="text-muted no-sub-breeds">No sub-breeds available.</p>
+                            {% endif %}
+                            <form action="{{ url_for('add_to_cart', breed_id=breed) }}" method="post" class="mt-3">
+                                <button type="submit" class="btn btn-primary w-100 add-to-cart">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center no-breeds">No breeds found.</p>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% include 'footer.html' %}

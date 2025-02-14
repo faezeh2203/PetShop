@@ -1,0 +1,21 @@
+<dev class="col-3">
+    <div class="card">
+        <div class="card-header">Admin Dashboard</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static' , filename=current_user.avatar) }}" width="200" height="200" alt="">
+            <p class="text-center mt-2">{{ current_user.name }}</p>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item"><a class="link" href="">List Users</a></li>
+                <li class="list-group-item"><a class="link" href="">Add User</a></li>
+                <li class="list-group-item"><a class="link" href="">Add Post</a></li>
+                <li class="list-group-item"><a class="link" href="">List Posts</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_info') }}">Info Account</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_edit') }}">Edit Profile</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_avatar') }}">Profile Avatar</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_password') }}">Change Password</a></li>
+                <li class="list-group-item bg-danger "><a class="link text-white" href="{{ url_for('SignOut') }}">sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</dev>

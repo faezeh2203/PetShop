@@ -1,0 +1,35 @@
+{% include './header.html' %}
+
+<div class="container">
+    <div class="row mt-4">
+        {% include "./account/menu.html" %}
+        <div class="col-4 border bg-white">
+            <h5 class="mt-3">Chenge Profile Pictute Account</h5>
+            <hr>
+            <form action="{{ url_for('account_avatar') }}" method="post" enctype="multipart/form-data">
+
+                {% with messagas = get_flashed_messages(with_categories=true) %}
+                    {% for category , messaga in messagas %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ messaga }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endwith %}
+
+                
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="basic-addon1">File</span>
+                        <input type="file" name="avatar" class="form-control" id="">
+                </div>
+    
+                <div class="input-group mb-3 mt-3">
+                    <button type="submit" class="btn btn-outline-primary w-100">Change Profile Picture</button>
+                </div>
+                
+            </form>  
+        </div>
+    </div>
+</div>
+
+{% include './footer.html' %}

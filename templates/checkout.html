@@ -1,0 +1,32 @@
+{% include 'header.html' %}
+
+<main class="container mt-4">
+    <h1 class="text-center mb-4">Checkout</h1>
+    {% if cart_items %}
+        <table class="table table-striped checkout-table">
+            <thead>
+                <tr>
+                    <th>Breed</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.breed.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center confirm-button">
+            <form action="{{ url_for('checkout') }}" method="post">
+                <button type="submit" class="btn btn-success">Confirm Order</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="text-center">Your cart is empty.</p>
+    {% endif %}
+</main>
+
+{% include 'footer.html' %}

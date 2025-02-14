@@ -1,0 +1,20 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <h1>Order #{{ order.id }} Details</h1>
+    <p>Status: {{ order.status }}</p>
+    <p>Total Price: ${{ order.total_price }}</p>
+    
+    <h2>Products</h2>
+    <ul>
+        {% for order_product in order.order_products %}
+            <li>
+                {{ order_product.product.name }} ({{ order_product.quantity }}) - ${{ order_product.price * order_product.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('orders') }}" class="btn btn-secondary mt-3">Back to Orders</a>
+</div>
+
+{% include 'footer.html' %}
