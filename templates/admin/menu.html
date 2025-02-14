@@ -6,9 +6,8 @@
             <p class="text-center mt-2">{{ current_user.name }}</p>
             <hr>
             <ul class="list-group">
-                <li class="list-group-item"><a class="link" href="">List Users</a></li>
-                <li class="list-group-item"><a class="link" href="">Add User</a></li>
-                <li class="list-group-item"><a class="link" href="">Add Post</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('get_all_users') }}">List Users</a></li>
+                <li class="list-group-item"><a class="link" href="{{ url_for('create_user') }}">Add User</a></li>
                 <li class="list-group-item"><a class="link" href="">List Posts</a></li>
                 <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_info') }}">Info Account</a></li>
                 <li class="list-group-item"><a class="link" href="{{ url_for('admin_account_edit') }}">Edit Profile</a></li>

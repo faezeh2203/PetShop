@@ -82,9 +82,11 @@ class Admin:
                 name = form.name.data
                 email = form.email.data
                 password = form.password.data
+                admin = bool(int(form.admin.data))  # تبدیل مقدار به عدد صحیح و سپس به Boolean
+
                 user = Users.query.filter_by(email=email).first()
                 if not user:
-                    newUser = Users(name=name, email=email)
+                    newUser = Users(name=name, email=email, admin=admin)  # مقدار Boolean برای admin
                     newUser.passwd = password
                     db.session.add(newUser)
                     db.session.commit()
@@ -95,6 +97,7 @@ class Admin:
                     return redirect(url_for('create_user'))
         return render_template('/admin/user/create.html', form=form)
 
+
     def edit_user(self):
         form = EditUser()
         user = Users.query.filter_by(id=request.args.get('id')).first()
@@ -103,6 +106,7 @@ class Admin:
                 user.name = form.name.data
                 user.email = form.email.data
                 user.phone = form.phone.data
+                user.admin = bool(int(form.admin.data))  # تبدیل مقدار admin به Boolean
                 db.session.commit()
                 flash('User Updated Successfully', 'success')
                 return redirect(url_for('get_all_users'))

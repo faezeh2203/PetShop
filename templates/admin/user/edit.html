@@ -30,6 +30,11 @@
                 </div>
     
                 <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="basic-addon1">Admin</span>
+                    {{ form.admin(class="form-control" , value=user.admin) }}
+                </div>
+
+                <div class="input-group mb-3 mt-3">
                     {{ form.submit(class='btn btn-info w-100') }}
                 </div>
                 
