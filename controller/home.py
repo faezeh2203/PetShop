@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 from flask import current_app as app
-
+from models import Breed
 
 def fetch_breeds():
     try:
@@ -27,8 +27,8 @@ class Home:
         pass
     
     def main(self):
-        page = request.args.get('page', 1, type=int)  # دریافت شماره صفحه از URL
-        per_page = 10  # تعداد نژادها در هر صفحه
+        page = request.args.get('page', 1, type=int)
+        per_page = 10
 
         breeds = fetch_breeds()
         breed_list = list(breeds.items())
@@ -39,4 +39,9 @@ class Home:
 
         breed_images = {breed: fetch_breed_image(breed) for breed in paginated_breeds}
 
-        return render_template('home.html', breeds=paginated_breeds, breed_images=breed_images, page=page, total_breeds=total_breeds, per_page=per_page)
+        breed_data = {breed.name: breed.id for breed in Breed.query.all()}
+        print("Breed Data:", breed_data)  # نمایش مقدار breed_data برای اشکال‌زدایی
+
+    
+
+        return render_template('home.html', breeds=paginated_breeds, breed_images=breed_images, breed_data=breed_data, page=page, total_breeds=total_breeds, per_page=per_page)

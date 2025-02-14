@@ -19,9 +19,11 @@
                             {% else %}
                                 <p class="text-muted no-sub-breeds">No sub-breeds available.</p>
                             {% endif %}
-                            <form action="{{ url_for('add_to_cart', breed_id=breed) }}" method="post" class="mt-3">
+                            <p>Breed ID: {{ breed_data.get(breed, 'Not Found') }}</p>
+                            <form action="{{ url_for('add_to_cart') }}" method="post">
+                                <input type="hidden" name="breed_id" value="{{ breed_data[breed] }}">
                                 <button type="submit" class="btn btn-primary w-100 add-to-cart">Add to Cart</button>
-                            </form>
+                            </form>                           
                         </div>
                     </div>
                 </div>

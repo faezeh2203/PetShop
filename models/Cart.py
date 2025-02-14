@@ -7,3 +7,4 @@ class Cart(db.Model):
     user_id = Column(Integer, ForeignKey('users.id'))
     breed_id = Column(Integer, ForeignKey('breed.id'))
     quantity = Column(Integer, default=1)
+    breed = db.relationship('Breed', backref=db.backref('cart_items', lazy=True))

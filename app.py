@@ -60,7 +60,7 @@ app.add_url_rule('/admin/changepassword' , 'admin_account_password' , adminContr
 app.add_url_rule('/admin/avatar' , 'admin_account_avatar' , adminController.admin_account_avatar , methods=('GET' , 'POST') )
 
 app.add_url_rule('/cart', 'view_cart', cartController.view_cart)
-app.add_url_rule('/cart/add/<string:breed_id>', 'add_to_cart', cartController.add_to_cart, methods=['POST'])
+app.add_url_rule('/cart/add', 'add_to_cart', cartController.add_to_cart, methods=['POST'])
 app.add_url_rule('/cart/remove/<string:cart_item_id>', 'remove_from_cart', cartController.remove_from_cart, methods=['POST'])
 app.add_url_rule('/cart/checkout', 'checkout', cartController.checkout, methods=['POST'])
 
